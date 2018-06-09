@@ -43,21 +43,21 @@ if(isset($_POST)) {
 	$folder_dir = "uploads/resume/";
 
 	//Getting Basename of file. So if your file location is Documents/New Folder/myResume.pdf then base name will return myResume.pdf
-	$base = basename($_FILES['resume']['name']); 
+	$base = basename($_FILES['resume']['name']);
 
 	//This will get us extension of your file. So myResume.pdf will return pdf. If it was resume.doc then this will return doc.
-	$resumeFileType = pathinfo($base, PATHINFO_EXTENSION); 
+	$resumeFileType = pathinfo($base, PATHINFO_EXTENSION);
 
 	//Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
-	$file = uniqid() . "." . $resumeFileType;   
+	$file = uniqid() . "." . $resumeFileType;
 
 	//This is where your files will be saved so in this case it will be uploads/resume/newfilename
-	$filename = $folder_dir .$file;  
+	$filename = $folder_dir .$file;
 
 	//We check if file is saved to our temp location or not.
-	if(file_exists($_FILES['resume']['tmp_name'])) { 
+	if(file_exists($_FILES['resume']['tmp_name'])) {
 
-		//Next we need to check if file type is of our allowed extention or not. I have only allowed pdf. You can allow doc, jpg etc. 
+		//Next we need to check if file type is of our allowed extention or not. I have only allowed pdf. You can allow doc, jpg etc.
 		if($resumeFileType == "pdf")  {
 
 			//Next we need to check file size with our limit size. I have set the limit size to 5MB. Note if you set higher than 2MB then you must change your php.ini configuration and change upload_max_filesize and restart your server
@@ -96,41 +96,35 @@ if(isset($_POST)) {
 
 		if($conn->query($sql)===TRUE) {
 			// Send Email
+			$to = $email;
+			$subject = "Internshala - Confirm Your Email Address";
+			$message = '
+			<html>
+				<head>
+					<title>Confirm Your Email</title>
+				</head>
+				<body>
+					<p>Click Link To Confirm</p>
+					<a href="http:intern-shala.000webhostapp.com/verify.php?token='.$hash.'&email='.$email.'">Verify Email</a>
+				</body>
+			</html>
+			';
+			$headers[] = 'MIME-VERSION: 1.0';
+			$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+			$headers[] = 'To: '.$to;
+			$headers[] = 'From: albertbgeorge@gmail.com';
 
-			// $to = $email;
+			$result = mail($to, $subject, $message, implode("\r\n", $headers));
 
-			// $subject = "Job Portal - Confirm Your Email Address";
+			if($result === TRUE) {
 
-			// $message = '
-			
-			// <html>
-			// <head>
-			// 	<title>Confirm Your Email</title>
-			// <body>
-			// 	<p>Click Link To Confirm</p>
-			// 	<a href="yourdomain.com/verify.php?token='.$hash.'&email='.$email.'">Verify Email</a>
-			// </body>
-			// </html>
-			// ';
+			//If data inserted successfully then Set some session variables for easy reference and redirect to login
+			$_SESSION['registerCompleted'] = true;
+			header("Location: login.php");
+			exit();
+		}
 
-			// $headers[] = 'MIME-VERSION: 1.0';
-			// $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-			// $headers[] = 'To: '.$to;
-			// $headers[] = 'From: hello@yourdomain.com';
-			// //you add more headers like Cc, Bcc;
-
-			// $result = mail($to, $subject, $message, implode("\r\n", $headers)); // \r\n will return new line. 
-
-			// if($result === TRUE) {
-
-			// 	//If data inserted successfully then Set some session variables for easy reference and redirect to login
-			// 	$_SESSION['registerCompleted'] = true;
-			// 	header("Location: login.php");
-			// 	exit();
-
-			// }
-
-			// //If data inserted successfully then Set some session variables for easy reference and redirect to login
+			// If data inserted successfully then Set some session variables for easy reference and redirect to login
 			$_SESSION['registerCompleted'] = true;
 			header("Location: login-candidates.php");
 			exit();

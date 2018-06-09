@@ -63,7 +63,7 @@ require_once("db.php");
 							<a href="index.php" class="dropdown-toggle">Home</a>
 						</li>
 						<li>
-							<a href="browse-job.php" class="dropdown-toggle">Jobs</a>
+							<a href="jobs.php" class="dropdown-toggle">Jobs</a>
 						</li>
 						<li>
 							<a href="#" class="dropdown-toggle">Candidates</a>

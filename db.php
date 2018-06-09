@@ -3,8 +3,7 @@
 //Your Mysql Config
 $servername = "localhost";
 $username = "root";
-$password = "password";
-$filename = "database.sql";
+$password = "";
 $dbname = "jobportal";
 
 //Create New Database Connection

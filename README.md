@@ -1,16 +1,35 @@
 # Internshala
 A mock internship-portal created for the evaluation by Internshala. The online Internship portal application allows students and recruiters to connect. The application provides the ability for students to create their accounts, upload their profile and resume, search, apply, view different openings. The application provides the ability for companies to create their accounts, search candidates, create internship postings, and view candidates applications.
 
-## Prerequisites
+## Getting Started
+
+### Prerequisites
 You need the LAMP stack.
 [Installing LAMP](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
 
-## Installing
+### Installing
 ```
 Paste the repository in /var/www/html/
 Edit the db.php file, and enter your PhpMyAdmin credentials, ignore if default.
 Add a new database named "jobportal" in your PhpMyAdmin and import the file "database.sql" into the same.
+Done! Should be live by now.
 ```
+
+### Sample Login IDs
+
+* **Company:**
+...Email: admin@iitb.ac.in
+...Password: 123456
+
+
+* **Student:**
+...Email: user@gmail.com
+...Password: 123456
+
+
+* Admin dashboard: (~/admin)
+...Username: admin
+...Password: 123456
 
 ## Features
 

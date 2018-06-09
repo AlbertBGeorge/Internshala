@@ -6,11 +6,13 @@ You need the LAMP stack.
 [Installing LAMP](https://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
 
 ## Installing
-'''
+```
 Paste the repository in /var/www/html/
+
 Edit the db.php file, and enter your PhpMyAdmin credentials, ignore if default.
+
 Add a new database named "jobportal" in your PhpMyAdmin and import the file "database.sql" into the same.
-'''
+```
 
 ## Features
 

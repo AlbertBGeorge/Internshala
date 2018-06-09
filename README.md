@@ -18,18 +18,16 @@ Done! Should be live by now.
 ### Sample Login IDs
 
 * **Company:**
-...Email: admin@iitb.ac.in
-...Password: 123456
-
+⋅⋅⋅Email: admin@iitb.ac.in
+⋅⋅⋅Password: 123456
 
 * **Student:**
-...Email: user@gmail.com
-...Password: 123456
-
+⋅⋅⋅Email: user@gmail.com
+⋅⋅⋅Password: 123456
 
 * Admin dashboard: (~/admin)
-...Username: admin
-...Password: 123456
+⋅⋅⋅Username: admin
+⋅⋅⋅Password: 123456
 
 ## Features
 
